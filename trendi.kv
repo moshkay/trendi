@@ -1,0 +1,241 @@
+# trendi.kv
+#: include components.kv
+#: set teal_color [0,0.57,0.9,1]
+#: set text_back_color [0.5,0.85,1.0,1]
+#: set screen_color [1.0,0.99,0.9,1]
+
+#: import Fade kivy.uix.screenmanager.FadeTransition
+#: import Toolbar kivymd.toolbar.Toolbar
+#: import MDTextField kivymd.textfields.MDTextField
+#: import MDRaisedButton kivymd.button.MDRaisedButton
+#: import NavigationDrawerIconButton kivymd.navigationdrawer.NavigationDrawerIconButton
+#: import get_color_from_hex kivy.utils.get_color_from_hex
+#: import Window kivy.core.window.Window
+
+<Manager>:
+	transition:Fade()
+	Splash:
+	Home:
+	Login:
+
+<Splash>:
+	name:"splash"
+	canvas.before:
+		Color:
+			rgba:[0,1,1,1]
+		Rectangle:
+			pos:self.pos
+			size:self.size
+	Label:
+		canvas.before:
+			Rectangle:
+				pos:self.pos
+				size:self.size
+				source:"images/back.jpg"
+		size_hint:(0.5,0.3)
+		pos_hint:{"center_x":0.5,"center_y":0.5}
+
+<AdvertLayout>:
+	canvas.before:
+		Rectangle:
+			pos:self.pos
+			size:self.size
+			source:root.image
+	MDIconButton:
+		icon:'earth'
+		size_hint:(None,None)
+		pos_hint:{"right":1,"bottom":1}
+		height:"20dp"
+		width:self.height
+		md_bg_color:teal_color
+		font_size:self.height
+		padding:[0,0]
+		on_release:
+			print (root.name)
+	
+
+
+
+
+<NavigationDrawerIconButton>:
+	theme_text_color:"Custom"
+	text_color:teal_color
+	bold:True
+	font_style:"Body1"
+
+<Navigation>:
+	title:"Trendi"
+	#width:"60dp"
+
+	size_hint:(0.6,0.68)
+
+
+	NavigationDrawerIconButton:
+		text:"Chats"
+		icon:"message"
+
+		on_release:
+			app.root.current_screen.ids['layout_manager'].current="chats"
+			app.root.current_screen.page_title=self.text
+		    
+
+	NavigationDrawerIconButton:
+		text:"Notification"
+		icon:"bell"
+		on_release:
+			app.root.current_screen.ids['layout_manager'].current="note"
+			app.root.current_screen.page_title=self.text
+	NavigationDrawerIconButton:
+		text:"Invites"
+		icon:"human"
+		on_release:
+			app.root.current_screen.ids['layout_manager'].current="invites"
+			app.root.current_screen.page_title=self.text
+	NavigationDrawerIconButton:
+		text:"Status"
+		icon:"information"
+		on_release:
+			app.root.current_screen.ids['layout_manager'].current="status"
+			app.root.current_screen.page_title=self.text
+	NavigationDrawerIconButton:
+		text:"Follow"
+		icon:"human-male-female"
+		on_release:
+			app.root.current_screen.ids['layout_manager'].current="follow"
+			app.root.current_screen.page_title=self.text
+	NavigationDrawerIconButton:
+		text:"Group"
+		icon:"group"
+		on_release:
+			app.root.current_screen.ids['layout_manager'].current="group"
+			app.root.current_screen.page_title=self.text
+	NavigationDrawerIconButton:
+		text:"Client"
+		icon:"account"
+		on_release:
+			app.root.current_screen.ids['layout_manager'].current="client"
+			app.root.current_screen.page_title=self.text
+	NavigationDrawerIconButton:
+		text:"Wallet"
+		icon:"wallet"
+		on_release:
+			app.root.current_screen.ids['layout_manager'].current="wallet"
+			app.root.current_screen.page_title=self.text
+	NavigationDrawerIconButton:
+		text:"Related"
+		icon:"tag"
+		on_release:
+			app.root.current_screen.ids['layout_manager'].current="related"
+			app.root.current_screen.page_title=self.text
+	NavigationDrawerIconButton:
+		text:"Adverts"
+		icon:"creation"
+		on_release:
+			app.root.current_screen.ids['layout_manager'].current="advert"
+			app.root.current_screen.page_title=self.text
+	NavigationDrawerIconButton:
+		text:"Store"
+		icon:"store"
+		on_release:
+			app.root.current_screen.ids['layout_manager'].current="store"
+			app.root.current_screen.page_title=self.text
+	NavigationDrawerIconButton:
+		text:"Settings"
+		icon:"settings"
+		on_release:
+			app.root.current_screen.ids['layout_manager'].current="settings"
+			app.root.current_screen.page_title=self.text
+	#NavigationDrawerIconButton:
+	#	text:"Pages"
+	#	on_release:
+	#		app.root.current_screen.ids['layout_manager'].current="pages"
+	#		app.root.current_screen.page_title=self.text
+	NavigationDrawerIconButton:
+		text:"About"
+		icon:"details"
+		on_release:
+			app.root.current_screen.ids['layout_manager'].current="about"
+			app.root.current_screen.page_title=self.text
+	NavigationDrawerIconButton:
+		text:"Exit"
+		icon:"exit-to-app"
+		on_press:
+			Window.close()
+
+
+
+
+
+<Home>:
+	name:"home"
+	image_carousel:carousel
+	layout_man:layout_manager
+	left_item:[["menu",lambda x: app.nav_bar.toggle()]]
+	page_title:"Trendi"
+	right_item:[["bell",lambda x: print ("notifications")]]
+	BoxLayout:
+		size_hint:(1,0.9)
+		orientation:"vertical"
+		pos_hint:{"center_x":0.5,"center_y":0.5}
+		Carousel:
+			id: carousel
+			size_hint:(1,0.3)
+			loop:True
+
+		LayoutManager:
+			id:layout_manager
+			size_hint:(1,0.7)
+					
+
+
+
+	
+<ToolbarScreen>:
+	Toolbar:
+		size_hint:(1,0.1)
+		pos_hint:{"top":1}
+		title:root.page_title
+		md_bg_color:teal_color
+		left_action_items:root.left_item
+		right_action_items:root.right_item
+<Login>:
+	username:username_input
+	password:password_input
+	name:"login"
+	page_title:"Login"
+	left_item:[["close", lambda x: Window.close()]]
+	right_item:[["dots-vertical", lambda x: print (4)]]
+	BoxLayout:
+		pos_hint:{"center_x":0.5,"center_y":0.5}
+		size_hint:(0.8,0.4)
+		orientation:"vertical"
+		spacing:"10dp"
+		MDTextField:
+			id:username_input
+			hint_text:"Username"
+			size_hint:(1,0.3)
+			required:True
+			message_mode:"on_error"
+			message:"This field is required"
+		MDTextField:
+			id:password_input
+			hint_text:"Password"
+			password:True
+			size_hint:(1,0.3)
+			required:True
+			message_mode:"on_error"
+			message:"This field is required"
+		MDRaisedButton:
+			text:"Login"
+			size_hint:(0.4,0.2)
+			pos_hint:{"center_x":0.5}
+			on_release:
+				root.next_page()
+		
+			
+
+
+
+
+
+

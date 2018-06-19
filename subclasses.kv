@@ -1,0 +1,115 @@
+#subclasses used in the app
+#: import MDSeparator kivymd.card.MDSeparator
+#: set screen_color [1.0,0.99,0.9,1]
+<ImageBoxLayout>:
+	canvas.before:
+		Color:
+			rgba:text_back_color
+		Rectangle:
+			pos:self.pos
+			size:self.size
+	orientation:"horizontal"
+	spacing:dp(20)
+	size_hint:(0.8,1)
+	pos_hint:{"center_x":0.5}
+	Image:
+		source:root.image
+		size_hint:(0.1,1)
+	MDLabel:
+		text:root.text
+		size_hint:(0.9,1)
+<OneLineIconListItem>:
+	theme_text_color:"Custom"
+<Screen>:
+	canvas.before:
+		Color:
+			rgba:screen_color
+		Rectangle:
+			pos:self.pos
+			size:self.size
+
+<AdvertCard>:
+	orientation:"vertical"
+	MDLabel:
+		text:root.header
+		size_hint:(0.8,0.2)
+		pos_hint:{"top":1,"center_x":0.5}
+		halign:"center"
+	MDSeparator:
+		md_bg_color:teal_color
+		size_hint:(1,None)
+		height:dp(1)
+	BoxLayout:
+		orientation:"horizontal"
+		size_hint:(1,0.6)
+		MDLabel:
+			text:root.company_name
+			size_hint:(0.5,1)
+			halign:"center"
+		MDSeparator:
+			orientation:"vertical"
+			size_hint:(None,1)
+			width:dp(1)
+		MDLabel:
+			text:root.goods
+			size_hint:(0.5,1)
+			halign:"center"
+<MDRaisedButton>:
+	md_bg_color:[0.85,0.11,0.38,1]
+	text_color:[1,1,1,1]
+	theme_text_color:"Custom"
+<RoundLabel>:
+	canvas.before:
+		Ellipse:
+			pos:self.pos
+			size:self.size
+			source:root.image
+	size_hint:(None,None)
+	pos_hint:{"center_y":0.5}
+
+<InputBoxLayout@BoxLayout>:
+	padding:[10,0]
+	spacing:"5dp"
+	pos_hint:{"center_x":0.6}
+	MDTextField:
+		hint_text:"Enter your chat Here"
+		size_hint:(0.8,None)
+	MDIconButton:
+		icon:"send"
+		size_hint:(None,1)
+		text_color:[1,1,1,1]
+		theme_text_color:"Custom"
+		width:self.height	
+		md_bg_color:teal_color
+		padding:[5,1]
+		on_press:
+			print(app.root.children[0].ids['layout_manager'].children)
+
+
+<ChatLabel@MDLabel>:
+	canvas.before:
+		Color:
+			rgba:text_back_color
+		Rectangle:
+			pos:self.pos
+			size:self.size
+<IconLayout>:
+	canvas.before:
+		Rectangle:
+			pos:self.pos
+			size:self.size
+			source:root.image
+	MDLabel:
+		canvas.before:
+			Color:
+				rgba:teal_color
+			Ellipse:
+				pos:self.pos
+				size:self.size
+		text:root.text
+		size_hint:(0.15,None)
+		height:self.width
+		pos_hint:{"top":1,'right':1}
+		halign:"center"
+		text_color:[1,1,1,1]
+		theme_text_color:"Custom"

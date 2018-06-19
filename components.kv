@@ -1,0 +1,744 @@
+#: set teal_color [0,0.57,0.9,1]
+#: set text_back_color [0.5,0.85,1.0,1]
+#: set screen_color [1.0,0.99,0.9,1]
+#: include subclasses.kv
+#: import ScreenManager kivy.uix.screenmanager.ScreenManager
+#: import Screen kivy.uix.screenmanager.Screen
+#: import Fade kivy.uix.screenmanager.FadeTransition
+#: import MDFloatingActionButton kivymd.button.MDFloatingActionButton
+#: import MDAccordion kivymd.accordion.MDAccordion
+#: import MDAccordionItem kivymd.accordion.MDAccordionItem
+#: import MDAccordionSubItem kivymd.accordion.MDAccordionSubItem
+#: import MDTabbedPanel kivymd.tabs.MDTabbedPanel
+
+
+<LayoutManager@ScreenManager>:
+	transition:Fade()
+	Chats:
+	Notification:
+	Invites:
+	Status:
+	Follow:
+	Client:
+	Wallet:
+	Related:
+	Advert:
+	Settings_page:
+	Store:
+	Group:
+	About:
+
+
+
+
+<Chats@Screen>:
+	name:"chats"
+	BoxLayout:
+		pos_hint:{"top":1,"left":1}
+		size_hint:(0.4,0.2)
+		TwoLineIconListItem:
+			size_hint:(1,1)
+			bold:True
+			ListImage:
+				source:"images/profile/8.jpg"
+	ScrollView:
+		do_scroll_y:False
+		size_hint:(0.5,0.2)
+		pos_hint:{"top":1,"right":1}
+		GridLayout:
+			spacing:dp(10)
+			size_hint:(None,1)
+			width:self.minimum_width
+			padding_x:dp(10)
+			rows:1
+			RoundLabel:	
+				height:self.parent.height/2
+				width:self.height
+				image:"images/profile/1.jpg"
+
+			RoundLabel:	
+				height:self.parent.height/2
+				width:self.height
+				image:"images/profile/2.jpg"
+			RoundLabel:	
+				height:self.parent.height/2
+				width:self.height
+				image:"images/profile/3.jpg"
+			RoundLabel:	
+				height:self.parent.height/2
+				width:self.height
+				image:"images/profile/4.jpg"
+			RoundLabel:	
+				height:self.parent.height/2
+				width:self.height
+				image:"images/profile/5.jpg"
+			RoundLabel:	
+				height:self.parent.height/2
+				width:self.height
+				image:"images/profile/6.jpg"
+			RoundLabel:	
+				height:self.parent.height/2
+				width:self.height
+				image:"images/profile/7.jpg"
+	ScrollView:
+		effect_cls:"ScrollEffect"
+		size_hint:(1,0.5)
+		pos_hint:{"center_y":0.5}
+		GridLayout:
+			id:chat_layout
+			size_hint:(1,None)
+			height:self.minimum_height
+			padding:(10,10)
+			cols:1
+			spacing:dp(5)
+			BoxLayout:
+				size_hint:(1,None)
+				orientation:"vertical"
+				height:dp(40)
+				ChatLabel:
+					text:"ade is a very stupid boy"
+					pos_hint:{"left":1}
+					size_hint:(0.3,1)
+					halign:"center"
+
+			BoxLayout:
+				size_hint:(1,None)
+				orientation:"vertical"
+				height:dp(60)
+				ChatLabel:
+					text:"stupid boy"
+					pos_hint:{"right":1}
+					size_hint:(0.3,1)
+					bold:True
+					halign:"center"
+
+	InputBoxLayout:
+		size_hint:(0.9,0.1)
+		pos_hint:{"bottom":1}
+
+<Notification@Screen>:
+	name:"note"
+	ScrollView:
+		effect_cls:"ScrollEffect"
+		size_hint:(1,1)
+		GridLayout:
+			cols:1
+			size_hint:(1,None)
+			height:self.minimum_height
+			padding:(20,10)
+			spacing:20
+			BoxLayout:
+				orientation:"vertical"
+				size_hint:(1,None)
+				ImageBoxLayout:
+					
+					image:"images/icon.jpg"
+					text:"changed from power to some thing elsee"
+			BoxLayout:
+				orientation:"vertical"
+				size_hint:(1,None)
+				ImageBoxLayout:
+					
+					image:"images/icon.jpg"
+					text:"changed from power to some thing elsee"
+			BoxLayout:
+				orientation:"vertical"
+				size_hint:(1,None)
+				ImageBoxLayout:
+					
+					image:"images/icon.jpg"
+					text:"changed from power to some thing elsee"
+			BoxLayout:
+				orientation:"vertical"
+				size_hint:(1,None)
+				ImageBoxLayout:
+					
+					image:"images/icon.jpg"
+					text:"changed from power to some thing elsee"
+			BoxLayout:
+				orientation:"vertical"
+				size_hint:(1,None)
+				ImageBoxLayout:
+					
+					image:"images/icon.jpg"
+					text:"changed from power to some thing else"
+
+
+
+
+
+
+<Invites@Screen>:
+	name:"invites"
+
+	BoxLayout:
+		size_hint:(1,1)
+		orientation:"vertical"
+		padding:[0,20]
+		OneLineListItem:
+			text:"Contacts"
+			font_style:"Subhead"
+			size_hint:(1,0.1)
+		ScrollView:
+			effect_cls:"ScrollEffect"
+			size_hint:(1,0.9)
+			GridLayout:
+				size_hint:(1,None)
+				height:self.minimum_height
+				cols:1
+				TwoLineIconListItem:
+					text:"contact 1"
+					secondary_text:"08123456789"
+					size_hint:(1,None)
+					ListImage:
+						source:"images/icon.jpg"
+				TwoLineIconListItem:
+					text:"contact 2"
+					secondary_text:"08123678578"
+					size_hint:(1,None)
+					ListImage:
+						source:"images/icon.jpg"
+				TwoLineIconListItem:
+					text:"contact 3"
+					secondary_text:"08123400056"
+					size_hint:(1,None)
+					ListImage:
+						source:"images/icon.jpg"
+
+
+<Group@Screen>:
+	name:"group"
+	
+	OneLineAvatarListItem:
+		id:up
+		text:"Add Group"
+		font_style:"Subhead"
+		size_hint:(1,0.1)
+		pos_hint:{"top":1}
+		ListImage:
+			canvas.before:
+				Color:
+					rgba:teal_color
+				Ellipse:
+					pos:self.pos
+					size:self.size
+			source:"images/add2.png"
+	ScrollView:
+		effect_cls:"ScrollEffect"
+		top:up.top-up.height
+		size_hint:(1,0.9)
+		GridLayout:
+			size_hint:(1,None)
+			height:self.minimum_height
+			padding:[0,10]
+			cols:1
+			OneLineIconListItem:
+				text:"Group 1"
+				
+				size_hint:(1,None)
+				ListImage:
+					source:"images/icon.png"
+			OneLineIconListItem:
+				text:"Group 2"
+				
+				size_hint:(1,None)
+				ListImage:
+					source:"images/icon.png"
+			OneLineIconListItem:
+				text:"Group 3"
+				size_hint:(1,None)
+				ListImage:
+					source:"images/icon.png"
+<Status@Screen>:
+    name:"status"
+	TwoLineIconListItem:
+		id: status
+		size_hint:(1,0.2)
+		pos_hint:{"top":1}
+		text: " Moshood "
+		secondary_text:"...Today is a good to do a good stuff!"
+		ListImage:
+			source:"images/icon.jpg"
+    MDLabel:
+    	text:"Change your Status below"
+    	id:toppest
+    	size_hint:(1,0.08)
+    	top:status.top-status.height
+    	bold:True
+    	font_style:"Subhead"
+
+
+
+    BoxLayout:
+    	#the boxlayout that holds the status input
+    	orientation:"horizontal"
+    	top:toppest.top-toppest.height
+    	id:toper
+    	pos_hint:{"center_x":0.5}
+    	size_hint:(1,0.22)
+    	spacing:"10dp"
+    	padding:["10dp",0]
+    	
+    	MDTextField:
+    		id:status_input
+    		hint_text:"enter your new status"
+    		size_hint:(0.9,None)
+    		height:"40dp"
+    	MDIconButton:
+    		icon:"send"
+    		text_color:[1,1,1,1]
+    		md_bg_color:teal_color
+    		theme_text_color:"Custom"
+    		size_hint:(None,None)
+    		width:"40dp"
+    		height:self.width
+    		on_release:
+    			status.secondary_text=status_input.text
+    			status_input.text=""
+    ScrollView:
+    	effect_cls:"ScrollEffect"
+    	size_hint:(1,0.5)
+    	top:toper.top-toper.height
+
+    	GridLayout:
+    		cols:1
+    		size_hint:(1,None)
+    		height:self.minimum_height
+    		padding:(10,0)
+    		spacing:"10dp"
+    		OneLineListItem:
+    			text:"Previous statuses"
+    			size_hint:(1,None)
+    			font_style:"Subhead"
+
+    		OneLineIconListItem:
+    			text:"last status"
+    			size_hint:(1,None)
+    		OneLineIconListItem:
+    			text:"second to the last"
+    			size_hint:(1,None)
+    		OneLineIconListItem:
+    			text:"third to the last"
+    			size_hint:(1,None)
+    		OneLineIconListItem:
+    			text:"fourth to the last"
+    			size_hint:(1,None)
+
+
+
+<Follow@Screen>:
+	name:"follow"
+	
+	MDAccordion:
+		size_hint:(1,1)
+		md_bg_color:teal_color
+		orientation:"vertical"
+
+		MDAccordionItem:
+			title:"Followers"
+			md_bg_color:[1,1,1,1]
+			theme_text_color:"Custom"
+			text_color:teal_color
+			MDAccordionSubItem:
+				text:"johnson"
+				size_hint:(1,0.05)
+			MDAccordionSubItem:
+				text:"tayo"
+			MDAccordionSubItem:
+				text:"subayi"
+			MDAccordionSubItem:
+				text:"bayo"
+			MDAccordionSubItem:
+				text:"samson"
+			MDAccordionSubItem:
+				text:"shola"
+		MDAccordionItem:
+			
+			title:"Followings"
+			MDAccordionSubItem:
+				text:"john"
+			MDAccordionSubItem:
+				text:"bosun"
+			MDAccordionSubItem:
+				text:"robert"
+			MDAccordionSubItem:
+				text:"michael"
+			MDAccordionSubItem:
+				text:"tayo"
+			MDAccordionSubItem:
+				text:"funmi"
+
+					
+
+<Client@Screen>:
+	name:"client"
+	OneLineListItem:
+		text:"Clients Related With"
+		pos_hint:{"top":1}
+		size_hint:(1,0.2)
+	ScrollView:
+		size_hint:(1,0.8)
+		GridLayout:
+			id:clientslayout
+			cols:1
+			size_hint:(1,None)
+			height:self.minimum_height
+			padding:[20,20]
+			spacing:"10dp"
+			AdvertCard:
+				header:"Mark"
+				company_name:"Facebook"
+				goods:"chats"
+				size_hint:(0.6,None)
+			AdvertCard:
+				header:"Bill Gate"
+				company_name:"Microsoft"
+				goods:"Software"
+				size_hint:(0.6,None)
+			AdvertCard:
+				header:"Dharjeezy"
+				company_name:"Sensations"
+				goods:"Accessories"
+				size_hint:(0.6,None)
+			
+			
+
+
+
+
+
+
+
+	
+
+<Wallet@Screen>:
+	name:"wallet"
+	BoxLayout:
+		spacing:"10dp"
+		orientation:"horizontal"
+		size_hint:(0.8,0.2)
+		pos_hint:{"top":1,"center_x":0.5}
+		IconLayout:
+			image:"images/icon.png"
+			text:"1000"
+			size_hint:(0.3,1)
+
+		IconLayout:
+			image:"images/icon.png"
+			text:"2"
+			size_hint:(0.3,1)
+
+		IconLayout:
+			image:"images/icon.png"
+			text:"3"
+			size_hint:(0.3,1)
+	BoxLayout:
+		pos_hint:{"center_x":0.5,"center_y":0.5}
+		size_hint:(0.5,0.5)
+		orientation:"vertical"
+		spacing:"2dp"
+		padding:[2,2]
+		MDRaisedButton:
+			text:"Buy Units"
+			size_hint:(1,0.25)
+			pos_hint:{"center_x":0.5}
+		MDRaisedButton:
+			text:"Check Units"
+			size_hint:(1,0.25)
+			
+			pos_hint:{"center_x":0.5}
+		MDRaisedButton:
+			text:"Used Units"
+			size_hint:(1,0.25)
+			
+			pos_hint:{"center_x":0.5}
+		MDRaisedButton:
+			text:"Buy Units"
+			size_hint:(1,0.25)
+		
+			pos_hint:{"center_x":0.5}
+
+
+
+<Advert@Screen>:
+	name:"advert"
+	MDTabbedPanel:
+		id:tab_panel
+		tab_display_mode:"icons"
+		md_bg_color:teal_color
+		size_hint:(1,1)
+
+		MDTab:
+			name:"Search"
+			text:"Search"
+			icon:"magnify"
+			FloatLayout:
+				BoxLayout:
+					size_hint:(1,0.2)
+					pos_hint:{"top":1}
+					orientation:"horizontal"
+					MDTextField:
+						hint_text:"Enter the name of company"
+						size_hint:(0.9,1)
+					MDIconButton:
+						icon:"magnify"
+						size_hint:(None,None)
+						height:"40dp"
+						width:"40dp"
+		MDTab:
+			name:"Edit"
+			text:"Edit"
+			icon:"pencil"
+			FloatLayout:
+				BoxLayout:
+					orientation:"vertical"
+					size_hint:(0.8,0.7)
+					pos_hint:{'center_x':0.5,"center_y":0.5}
+					MDTextField:
+						hint_text:"Edit Company name"
+						size_hint:(1,0.2)
+					MDTextField:
+						hint_text:"Edit Specilaisatoin"
+						size_hint:(1,0.2)
+					MDRaisedButton:
+						text:"Change"
+						size_hint:(1,0.1)
+
+		MDTab:
+			name:"Post"
+			text:"Post"
+			icon:"creation"
+			md_bg_color:teal_color
+			FloatLayout:
+				BoxLayout:
+					pos_hint:{"center_x":0.5,"center_y":0.5}
+					size_hint:(0.8,0.7)
+					orientation:"vertical"
+					MDTextField:
+						hint_text:"Name of company"
+						size_hint:(1,0.4)
+					MDTextField:
+						hint_text:"Specialisation"
+						size_hint:(1,0.4)
+
+					MDRaisedButton:
+						text:"Post"
+						md_bg_color:teal_color
+						size_hint:(1,0.2)
+
+
+
+
+	
+<Settings_page@Screen>:
+	name:"settings"
+	BoxLayout:
+		id:topper
+		orientation:"horizontal"
+		pos_hint:{'top':1}
+		size_hint:(1,0.2)
+		spacing:"10dp"
+		padding:[10,0]
+		RoundLabel:
+			image:"images/icon.jpg"
+			size_hint:(None,None)
+			height:self.parent.height
+			width:self.height
+		TwoLineListItem:
+			text:"Ben"
+			secondary_text:"hi, I am busy".capitalize()
+			size_hint:(0.8,1)
+	BoxLayout:
+		top:topper.top-topper.height
+		size_hint:(1,0.7)
+		orientation:"vertical"
+		OneLineIconListItem:
+			text:"Account"
+			size_hint:(1,0.25)
+			ListIcon:
+				icon:"account"
+		OneLineIconListItem:
+			text:"Chats"
+			size_hint:(1,0.25)
+			ListIcon:
+				icon:"message"
+		OneLineIconListItem:
+			text:"Notification"
+			size_hint:(1,0.25)
+			ListIcon:
+				icon:"bell"
+		OneLineIconListItem:
+			text:"About"
+			size_hint:(1,0.25)
+			ListIcon:
+				icon:"details"
+
+<Store@Screen>:
+	name:"store"
+	ScrollView:
+		id:topper
+		do_scroll_y:False
+		size_hint:(1,0.2)
+		pos_hint:{"top":1,"center_x":0.5}
+		
+		GridLayout:
+			padding:"5dp"
+			size_hint:(None,1)
+			width:self.minimum_width
+			spacing:"10dp"
+			rows:1
+			MDRaisedButton:
+				text:"Fashion"
+				size_hint:(None,1)
+			MDRaisedButton:
+				text:"Sport"
+				size_hint:(None,1)
+			MDRaisedButton:
+				text:"Services"
+				size_hint:(None,1)
+			MDRaisedButton:
+				text:"Entertainment"
+				size_hint:(None,1)
+	ScrollView:
+		do_scroll_y:False
+		top:topper.top-topper.height
+		size_hint:(1,0.4)
+		pos_hint:{"center_x":0.5}
+		
+		GridLayout:
+			padding:"5dp"
+			size_hint:(None,1)
+			width:self.minimum_width
+			spacing:"10dp"
+			rows:1
+			MDLabel:
+
+				canvas.before:
+					Rectangle:
+						pos:self.pos
+						size:self.size
+						source:'images/1.jpg'
+				
+				size_hint:(None,1)
+				
+			MDLabel:
+				
+
+				canvas.before:
+					Rectangle:
+						pos:self.pos
+						size:self.size
+						source:'images/2.jpg'
+				
+				size_hint:(None,1)
+				
+			MDLabel:
+				
+				canvas.before:
+					Rectangle:
+						pos:self.pos
+						size:self.size
+						source:'images/3.jpg'
+			
+				size_hint:(None,1)
+			MDLabel:
+				canvas.before:
+					Rectangle:
+						pos:self.pos
+						size:self.size
+						source:'images/4.jpg'
+				
+				size_hint:(None,1)
+			MDLabel:
+				canvas.before:
+					Rectangle:
+						pos:self.pos
+						size:self.size
+						source:'images/5.jpg'
+				
+				size_hint:(None,1)
+			MDLabel:
+				canvas.before:
+					Rectangle:
+						pos:self.pos
+						size:self.size
+						source:'images/6.jpg'
+			
+				size_hint:(None,1)
+			MDLabel:
+				canvas.before:
+					Rectangle:
+						pos:self.pos
+						size:self.size
+						source:'images/7.jpg'
+				
+				size_hint:(None,1)
+			MDLabel:
+				canvas.before:
+					Rectangle:
+						pos:self.pos
+						size:self.size
+						source:'images/7.jpg'
+				
+				size_hint:(None,1)
+				
+	
+
+
+
+
+
+
+
+<Pages@Screen>:
+	name:"pages"
+<About@Screen>:
+	name:"about"
+	MDCard:
+		orientation:"vertical"
+		pos_hint:{"center_x":0.5,"center_y":0.5}
+		size_hint:(0.8,0.4)
+		padding_x:10
+		MDLabel:
+			text:"About/help"
+			halign:"center"
+			size_hint:(1,0.1)
+		MDSeparator:
+			height:dp(1)
+			size_hint_y:(None)
+		MDLabel:
+			text:"this the Trendi Mobile App, where advertisement is our toppest priority"
+			size_hint:(1,0.2)
+			halign:"center"
+
+
+<Related@Screen>:
+	name:"related"
+	OneLineListItem:
+		text:"Clients Related With"
+		pos_hint:{"top":1}
+		size_hint:(1,0.2)
+	ScrollView:
+		size_hint:(1,0.8)
+		GridLayout:
+			id:clientslayout
+			cols:1
+			size_hint:(1,None)
+			height:self.minimum_height
+			padding:[20,20]
+			spacing:"10dp"
+			AdvertCard:
+				header:"Mark"
+				company_name:"Facebook"
+				goods:"chats"
+				size_hint:(0.6,None)
+			AdvertCard:
+				header:"Bill Gate"
+				company_name:"Microsoft"
+				goods:"Software"
+				size_hint:(0.6,None)
+			AdvertCard:
+				header:"Dharjeezy"
+				company_name:"Sensations"
+				goods:"Accessories"
+				size_hint:(0.6,None)
